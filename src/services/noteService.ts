@@ -31,9 +31,12 @@ export const fetchNotes = async (
   return data;
 };
 
-export const createNote = async (
-  payload: Pick<Note, "title" | "content">
-): Promise<Note> => {
+// ✅ ВИПРАВЛЕНО ТУТ
+export const createNote = async (payload: {
+  title: string;
+  content: string;
+  tag: string;
+}): Promise<Note> => {
   const { data } = await api.post<Note>("", payload);
   return data;
 };
@@ -42,6 +45,7 @@ export const deleteNote = async (id: string): Promise<Note> => {
   const { data } = await api.delete<Note>(`/${id}`);
   return data;
 };
+
 
 
 
