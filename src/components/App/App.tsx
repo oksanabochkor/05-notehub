@@ -37,6 +37,7 @@ const App = () => {
         {totalPages > 1 && (
           <Pagination
             pageCount={totalPages}
+            currentPage={page}
             onPageChange={setPage}
           />
         )}
@@ -61,6 +62,7 @@ const App = () => {
 };
 
 export default App;
+
 
 
 

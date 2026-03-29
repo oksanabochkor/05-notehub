@@ -16,7 +16,15 @@ const Modal = ({ onClose, children }: ModalProps) => {
     };
 
     document.addEventListener("keydown", onEsc);
-    return () => document.removeEventListener("keydown", onEsc);
+
+    // ❗ БЛОКУЄМО СКРОЛ СТОРІНКИ (ВИМОГА ПЕРЕВІРКИ)
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.removeEventListener("keydown", onEsc);
+      document.body.style.overflow = previousOverflow;
+    };
   }, [onClose]);
 
   if (!root) return null;
@@ -32,4 +40,5 @@ const Modal = ({ onClose, children }: ModalProps) => {
 };
 
 export default Modal;
+
 
